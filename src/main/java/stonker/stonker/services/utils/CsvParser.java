@@ -1,8 +1,9 @@
 package stonker.stonker.services.utils;
 
-import stonker.stonker.entities.Tick;
+import com.opencsv.CSVReader;
+import org.ta4j.core.Bar;
+import org.ta4j.core.BaseBar;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,14 +14,13 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 
-public abstract class CsvParser {
+public class CsvParser {
 
     public static DateTimeFormatter YYYY_MM_DD = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public static ArrayList<Bar> parse(String fileName, DateTimeFormatter dateFormat) {
-        InputStream stream = CSVparser.class.getClassLoader().getResourceAsStream(fileName);
+        InputStream stream = CsvParser.class.getClassLoader().getResourceAsStream(fileName);
         CSVReader csvReader = new CSVReader(new InputStreamReader(stream, StandardCharsets.UTF_8), ',', '"', 1);
 
         ArrayList<Bar> bars = new ArrayList<>();

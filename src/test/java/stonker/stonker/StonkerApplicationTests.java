@@ -2,8 +2,22 @@ package stonker.stonker;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.ta4j.core.*;
+import org.ta4j.core.analysis.criteria.AverageProfitableTradesCriterion;
+import org.ta4j.core.analysis.criteria.RewardRiskRatioCriterion;
+import org.ta4j.core.analysis.criteria.TotalProfitCriterion;
+import org.ta4j.core.analysis.criteria.VersusBuyAndHoldCriterion;
+import org.ta4j.core.indicators.SMAIndicator;
+import org.ta4j.core.indicators.helpers.ClosePriceIndicator;
+import org.ta4j.core.trading.rules.CrossedDownIndicatorRule;
+import org.ta4j.core.trading.rules.CrossedUpIndicatorRule;
+import org.ta4j.core.trading.rules.StopGainRule;
+import org.ta4j.core.trading.rules.StopLossRule;
+import stonker.stonker.services.utils.CsvParser;
 
 import java.util.ArrayList;
+
+import static stonker.stonker.services.utils.CsvParser.YYYY_MM_DD;
 
 @SpringBootTest
 class StonkerApplicationTests {
@@ -13,7 +27,7 @@ class StonkerApplicationTests {
 		System.out.println("55652222950004".length());
 
 
-		ArrayList<Bar> bars = CSVparser.parse("TSLA.csv", YYYY_MM_DD);
+		ArrayList<Bar> bars = CsvParser.parse("TSLA.csv", YYYY_MM_DD);
 		BarSeries series = new BaseBarSeriesBuilder().withBars(bars).withName("TSLA").build();
 
 		ClosePriceIndicator closePrice = new ClosePriceIndicator(series);
