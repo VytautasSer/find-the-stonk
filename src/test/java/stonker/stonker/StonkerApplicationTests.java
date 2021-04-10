@@ -1,5 +1,7 @@
 package stonker.stonker;
 
+import com.binance.api.client.BinanceApiClientFactory;
+import com.binance.api.client.BinanceApiRestClient;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.ta4j.core.*;
@@ -23,7 +25,7 @@ import static stonker.stonker.services.utils.CsvParser.YYYY_MM_DD;
 class StonkerApplicationTests {
 
 	@Test
-	void test() {
+	void strategyTest() {
 		System.out.println("55652222950004".length());
 
 
@@ -73,6 +75,14 @@ class StonkerApplicationTests {
 		AnalysisCriterion vsBuyAndHold = new VersusBuyAndHoldCriterion(new TotalProfitCriterion());
 		System.out.println("Our profit vs buy-and-hold profit: " + vsBuyAndHold.calculate(series, tradingRecord));
 
+	}
+
+	@Test
+	public void historyApiTestBinance() {
+		BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance("API-KEY", "TgIGN2f81ctAMrKocr7SzSEtQFwQN6OGt6gqBqrwvFPb8ToOf9W1X9mhPktB5ioo");
+		BinanceApiRestClient client = factory.newRestClient();
+		long serverTime = client.getServerTime();
+		System.out.println(serverTime);
 	}
 
 	void pitfalls() {
