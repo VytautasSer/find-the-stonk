@@ -2,6 +2,8 @@ package stonker.stonker;
 
 import com.binance.api.client.BinanceApiClientFactory;
 import com.binance.api.client.BinanceApiRestClient;
+import com.binance.api.client.domain.market.Candlestick;
+import com.binance.api.client.domain.market.CandlestickInterval;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.ta4j.core.*;
@@ -18,6 +20,8 @@ import org.ta4j.core.trading.rules.StopLossRule;
 import stonker.stonker.services.utils.CsvParser;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import static stonker.stonker.services.utils.CsvParser.YYYY_MM_DD;
 
@@ -82,6 +86,12 @@ class StonkerApplicationTests {
 		BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance("API-KEY", "TgIGN2f81ctAMrKocr7SzSEtQFwQN6OGt6gqBqrwvFPb8ToOf9W1X9mhPktB5ioo");
 		BinanceApiRestClient client = factory.newRestClient();
 		long serverTime = client.getServerTime();
+
+		List<Candlestick> candles = client.getCandlestickBars("NEOETH", CandlestickInterval.HALF_HOURLY);
+		for (Candlestick candle : candles) {
+			System.out.println(new Date(candle.getOpenTime()).toString() + " " + candle);
+		}
+
 		System.out.println(serverTime);
 	}
 
