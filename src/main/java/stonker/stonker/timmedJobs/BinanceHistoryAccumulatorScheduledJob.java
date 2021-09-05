@@ -21,7 +21,7 @@ public class BinanceHistoryAccumulatorScheduledJob {
 
     @Scheduled(fixedRate = 100000)
     public void fetchHistory() {
-        System.out.println("DB Test " + repository.findById(1L));
+        System.out.println("DB Test :" + repository.findById(1L));
 
 //        List<Candlestick> last500MinuteCandles = binanceProvider.getLastFiveHundredOneMinuteCandles(BinanceHistoryProvider.HistoryPairs.BTC);
     }
