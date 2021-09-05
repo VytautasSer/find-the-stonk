@@ -85,14 +85,13 @@ class StonkerApplicationTests {
 	public void historyApiTestBinance() {
 		BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance("API-KEY", "TgIGN2f81ctAMrKocr7SzSEtQFwQN6OGt6gqBqrwvFPb8ToOf9W1X9mhPktB5ioo");
 		BinanceApiRestClient client = factory.newRestClient();
-		long serverTime = client.getServerTime();
 
-		List<Candlestick> candles = client.getCandlestickBars("NEOETH", CandlestickInterval.HALF_HOURLY);
+		List<Candlestick> candles = client.getCandlestickBars("XRPUSDT", CandlestickInterval.ONE_MINUTE);
 		for (Candlestick candle : candles) {
-			System.out.println(new Date(candle.getOpenTime()).toString() + " " + candle);
+			System.out.println(new Date(candle.getOpenTime()) + " " + candle);
 		}
+		System.out.println(candles.size());
 
-		System.out.println(serverTime);
 	}
 
 	void pitfalls() {

@@ -42,6 +42,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.ta4j</groupId>
             <artifactId>ta4j-core</artifactId>
             <version>0.13</version>
@@ -53,14 +58,11 @@
             <version>3.9</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.github.binance-exchange/binance-java-api -->
         <dependency>
             <groupId>com.github.binance-exchange</groupId>
             <artifactId>binance-java-api</artifactId>
             <version>master</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
