@@ -2,21 +2,17 @@ package stonker.stonker.entities;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter @Setter @ToString @NoArgsConstructor
+@Table(name = "candles")
 @Entity
 public class Candlestick {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    private long openTime;
 
     private String ticker;
-    private long openTime;
     private double open;
     private double high;
     private double low;
@@ -34,6 +30,7 @@ public class Candlestick {
         this.volume = volume;
         this.quoteAssetVolume = quoteAssetVolume;
     }
+
 }
 
 

@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class}) // turn off database auto config
 public class StonkerApplication {
 
 	public static void main(String[] args) {
